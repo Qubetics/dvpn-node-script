@@ -165,8 +165,7 @@ fi
 # Detect Ubuntu version for choosing the matching prebuilt binary
 UBUNTU_VERSION=$(lsb_release -rs)
 # Set binary download URL (update this if your release URL pattern is different)
-# BINARY_URL="https://github.com/Qubetics/dvpn-node-script/releases/download/ubuntu${UBUNTU_VERSION}/${BINARY}"
-BINARY_URL=""
+BINARY_URL="https://github.com/Qubetics/dvpn-node-script/releases/download/ubuntu${UBUNTU_VERSION}/${BINARY}"
 echo $BINARY_URL
 
 # Target directory for binary based on current Go installation path
@@ -184,6 +183,8 @@ curl -L "$BINARY_URL" -o "/tmp/${BINARY}"
 chmod +x "/tmp/${BINARY}"
 sudo mv "/tmp/${BINARY}" "$INSTALL_PATH/${BINARY}"
 echo "Binary moved to $INSTALL_PATH/${BINARY}"
+
+sudo apt-get install -y build-essential jq wget unzip
 
   # Prepare node home and select a moniker
   mkdir -p "${NODE_DIR}"
