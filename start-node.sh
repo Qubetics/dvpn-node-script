@@ -11,7 +11,7 @@ BINARY="${BINARY:-qubetics-dvpnx}"  # Default binary name; override by setting $
 API_PORT=18133
 # Try to fetch a public IP but don't let a failure abort the script early; we'll validate below
 PUBLIC_IP=$(curl -fsSL https://ifconfig.me || true)
-CHAIN_RPC="https://tendermint.qubetics.com"
+CHAIN_RPC="https://tendermint.qubetics.com:443"
 CHAIN_ID="qubetics_9030-1"
 KEYRING_BACKEND="test"
 KEYRING_NAME="qubetics"
