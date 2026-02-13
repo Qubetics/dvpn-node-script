@@ -40,10 +40,10 @@ fi
 # Normalize and check for ':' which indicates IPv6 (IPv4 won't contain ':')
 CLEAN_PUBLIC_IP=${PUBLIC_IP#http://}
 CLEAN_PUBLIC_IP=${CLEAN_PUBLIC_IP#https://}
-if [[ -n "${CLEAN_PUBLIC_IP}" && "${CLEAN_PUBLIC_IP}" == *:* ]]; then
-  echo "[ERROR] Detected public IP (${CLEAN_PUBLIC_IP}) appears to be IPv6."
-  echo "This script requires an IPv4 public IP. Please provide an IPv4 address or disable IPv6."
-  exit 1
+
+# Detect and format IPv6 properly
+if [[ "$CLEAN_PUBLIC_IP" == : ]]; then
+  CLEAN_PUBLIC_IP="[${CLEAN_PUBLIC_IP}]"
 fi
 
 
